@@ -11,8 +11,9 @@ $claims = Hash.new
 # a claim looks like #5 @ 769,790: 22x13
 # using regex to parse out the coordinates and size
 def parse_claim(claim)
-  coordinates = claim.match(/@ (.+):/).captures[0].split(',').map(&:to_i)
-  size = claim.match(/: (.+)/).captures[0].split('x').map(&:to_i)
+  captures = claim.match(/@ (.+): (.+)/).captures
+  coordinates = captures[0].split(',').map(&:to_i)
+  size = captures[1].split('x').map(&:to_i)
   [coordinates, size]
 end
 

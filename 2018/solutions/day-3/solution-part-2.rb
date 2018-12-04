@@ -15,10 +15,11 @@ $claim_ids = {}
 # a claim looks like #5 @ 769,790: 22x13
 # using regex to parse out the coordinates and size
 def parse_claim(claim)
+  captures = claim.match(/#(.+) @ (.+): (.+)/).captures
   {
-    coordinates: claim.match(/@ (.+):/).captures[0].split(',').map(&:to_i),
-    size: claim.match(/: (.+)/).captures[0].split('x').map(&:to_i),
-    id: claim.match(/#(.+) @/).captures[0].to_i,
+    id: captures[0].to_i,
+    coordinates: captures[1].split(',').map(&:to_i),
+    size: captures[2].split('x').map(&:to_i),
   }
 end
 
@@ -57,7 +58,7 @@ find_claim
 
 =begin
 Time
-real    0m2.258s
-user    0m2.168s
-sys     0m0.077s
+real    0m2.249s
+user    0m2.160s
+sys     0m0.081s
 =end
