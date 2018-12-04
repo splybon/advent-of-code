@@ -1,4 +1,3 @@
-require 'pry'
 require_relative('../../utils/data_reader.rb')
 include DataReader
 
@@ -19,7 +18,7 @@ def parse_claim(claim)
   {
     id: captures[0].to_i,
     coordinates: captures[1].split(',').map(&:to_i),
-    size: captures[2].split('x').map(&:to_i),
+    size: captures[2].split('x').map(&:to_i)
   }
 end
 
@@ -42,14 +41,14 @@ def add_claim(coordinates:, size:, id:)
       ids = $claims[coordinate].split('-').reject(&:empty?)
 
       # If there are multiple ids in each coordinate set the overall id to true for each id
-      ids.each { |id| $claim_ids[id.to_s] = true } if ids.length > 1
+      ids.each { |claim_id| $claim_ids[claim_id.to_s] = true } if ids.length > 1
     end
   end
 end
 
 # Finds the claim that has not been set to true
 def find_claim
-  key = $claim_ids.select { |k, v| !v}.keys[0]
+  key = $claim_ids.reject { |_id, v| v }.keys[0]
   puts "key: #{key}"
 end
 

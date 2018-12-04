@@ -6,7 +6,7 @@ input = read_data(File.dirname(__FILE__))
 # Using a hash to plot instead of 2-d array.  Will have less null values
 # Need global variables to access inside of methods
 # Hash key will be an array of coords
-$claims = Hash.new
+$claims = {}
 
 # a claim looks like #5 @ 769,790: 22x13
 # using regex to parse out the coordinates and size
@@ -34,7 +34,7 @@ end
 
 # Count the values that are 2 or greater
 def count_claim
-  count = $claims.values.inject {|sum, n| n >= 2 ? (sum + 1) : sum} - 1
+  count = $claims.values.inject { |sum, n| n >= 2 ? (sum + 1) : sum } - 1
   puts "count: #{count}"
 end
 
