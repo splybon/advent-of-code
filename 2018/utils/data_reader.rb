@@ -4,8 +4,8 @@ module DataReader
   end
 end
 
+# USE CASE
 =begin
-use like
 require_relative('../../utils/data_reader.rb')
 include DataReader
 
