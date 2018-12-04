@@ -8,3 +8,9 @@ function dataReader(dir) {
 }
 
 module.exports = dataReader;
+
+// Use Case
+/*
+const dataReader = require("../../utils/dataReader");
+const input = dataReader(__dirname);
+*/

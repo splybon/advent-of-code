@@ -36,14 +36,18 @@ def add_claim(coordinates:, size:, id:)
   (x_min..x_max).each do |x_coord|
     (y_min..y_max).each do |y_coord|
       coordinate = [x_coord, y_coord]
+      # Storing each coordinate as a string of ids 5-22-210
+      # This is basically a fake array...
       $claims[coordinate] = ($claims[coordinate] || '') + "-#{id}"
       ids = $claims[coordinate].split('-').reject(&:empty?)
+
+      # If there are multiple ids in each coordinate set the overall id to true for each id
       ids.each { |id| $claim_ids[id.to_s] = true } if ids.length > 1
     end
   end
 end
 
-# Count the values that are 2 or greater
+# Finds the claim that has not been set to true
 def find_claim
   key = $claim_ids.select { |k, v| !v}.keys[0]
   puts "key: #{key}"
