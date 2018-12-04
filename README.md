@@ -2,7 +2,7 @@
 
 This repo contains solutions to the [advent of code](https://adventofcode.com) problems.
 
-Run files with command line
+Run files with command line    
 Ex:
 ```
 ruby 2018/solutions/day-3/solution_part_2.rb
