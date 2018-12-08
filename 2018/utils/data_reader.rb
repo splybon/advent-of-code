@@ -1,6 +1,6 @@
 module DataReader
-  def read_data(file_path)
-    File.readlines("#{file_path}/input.txt")
+  def read_data(file_path, file='input.txt')
+    File.readlines("#{file_path}/#{file}")
   end
 end
 
